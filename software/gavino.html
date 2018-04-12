@@ -1,0 +1,53 @@
+<!--This code is based on a project by Seb Lee-Delisle: http://seb.ly/2011/04/multi-touch-game-controller-in-javascripthtml5-for-ipad/-->
+<!doctype html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="192x192" href="/icon.png">
+<title>gaVino</title>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="gavino.css">
+
+</head>
+<body scroll="no" style="overflow: hidden">
+<center>
+<!--
+<p id="stream"></p>
+-->
+<div id="stream"></div>
+
+<script>
+// This script automatically picks the right IP for the stream
+// Thanks to wonx (github.com/wonx)
+  host = window.location.hostname;
+//img = '<img src="http://' + host + ':9000/?action=stream" style="height:100vh;"/>';
+  img = '<img src="http://' + host + ':9000/?action=stream" style="width:49%; height:100vh;"/><img src="http://' + host + ':9000/?action=stream" style="width:49%; height:100vh;"/>';
+//img = '<img src="http://10.10.124.50:9000/?action=stream" style="width:49%;"/><img src="http://10.10.124.50:9000/?action=stream" style="width:49%;"/>';
+//img = '<img src="stream.png" style="height:100vh;"/>';
+  document.getElementById("stream").innerHTML = img;
+
+  element = document.getElementById('stream');
+
+  element.addEventListener('click', fullscreen, false);
+
+  function fullscreen() {
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.msRequestFullscreen) {
+      element.msRequestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();
+    }
+  }
+
+</script>
+</center>
+
+</body>
+</html>
